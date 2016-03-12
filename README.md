@@ -1,3 +1,5 @@
+### NOTE THOMAS: This custom binding is forked to increase MaxMessageSize programmatically. This binding uses default settings of basicHttpBinding for most of the properties like message buffer size. Check [here](http://sureshjakka.blogspot.nl/2010/03/changing-message-sizes-in.html) for more information.
+
 A full tutorial [is here](http://webservices20.blogspot.co.il/2008/11/introducing-wcf-clearusernamebinding.html).
 
 You can also check [my twitter](https://twitter.com/YaronNaveh).
