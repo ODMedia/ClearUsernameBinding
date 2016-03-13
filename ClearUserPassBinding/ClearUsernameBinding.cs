@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
+using System.Xml;
 
 
 /*
@@ -24,10 +25,17 @@ namespace WebServices20.BindingExtenions
 
         public override BindingElementCollection CreateBindingElements()
         {
+            XmlDictionaryReaderQuotas rqMax = XmlDictionaryReaderQuotas.Max;
+            TextMessageEncodingBindingElement textBE = new TextMessageEncodingBindingElement();
+            textBE.MessageVersion = this.messageVersion;
+
+            rqMax.CopyTo(textBE.ReaderQuotas);
             var res = new BindingElementCollection();
-            res.Add(new TextMessageEncodingBindingElement() { MessageVersion = this.messageVersion});
+            res.Add(textBE);
+
             res.Add(SecurityBindingElement.CreateUserNameOverTransportBindingElement());
             res.Add(new AutoSecuredHttpTransportElement());
+
             return res;
         }
 

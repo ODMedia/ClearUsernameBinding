@@ -16,6 +16,14 @@ namespace WebServices20.BindingExtenions
     public class AutoSecuredHttpTransportElement : HttpTransportBindingElement, 
                         ITransportTokenAssertionProvider
     {
+        public AutoSecuredHttpTransportElement()
+        {
+            //Set to 2MB
+            MaxReceivedMessageSize = 10485760;
+            MaxBufferSize = 10485760;
+            MaxBufferPoolSize = 10485760;
+        }
+
         public override T GetProperty<T>(BindingContext context)
         {
             if (typeof(T) == typeof(ISecurityCapabilities))            
